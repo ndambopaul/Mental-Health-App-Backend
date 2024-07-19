@@ -27,9 +27,13 @@ const UserSchema = new mongoose.Schema({
     profile_picture: String,
     account_status: {
         type: String,
-        enum: ["Active", "Disabled", "Pending Review"],
-        default: "Active"
+        enum: ["Active", "Disabled", "Pending"],
+        default: "Pending"
     },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
+    activationToken: String,
+    activationTokenExpires: Date,
     createdAt: {
         type: Date,
         default: Date.now
