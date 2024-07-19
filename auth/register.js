@@ -18,11 +18,15 @@ const register = async (req, res) => {
         .status(400)
         .send({ error: `User with email: ${data.email} already exists!!` });
 
-    const existingUserByUsername = await User.findOne({ username: data.username });
+    const existingUserByUsername = await User.findOne({
+      username: data.username,
+    });
     if (existingUserByUsername)
-        return res
+      return res
         .status(400)
-        .send({ error: `User with username: ${data.username} already exists!!` });
+        .send({
+          error: `User with username: ${data.username} already exists!!`,
+        });
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
     data.password = hashedPassword;
@@ -31,7 +35,7 @@ const register = async (req, res) => {
       return res
         .status(400)
         .send({ error: "Something went wrong, user could not be created" });
-    res.send(newUser).status(201)
+    res.send(newUser).status(201);
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: error.message });
