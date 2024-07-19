@@ -29,9 +29,14 @@ npm start
 ### 1. Authentication
 - /api/v0/auth/register
 - /api/v0/auth/login
+- /api/v0/auth/forgot-password
+- /api/v0/auth/activate-user/<token>
+- /api/v0/auth/reset-password
 
 ### 2. Users
 - /api/v0/users
+- /api/v0/users/<userId>
+- /api/v0/users/upload-profile-photo
 
 ## Note:
 - To authenticate, after getting your token from the login endpoint, pass the token inside an Authorization header, e.g
